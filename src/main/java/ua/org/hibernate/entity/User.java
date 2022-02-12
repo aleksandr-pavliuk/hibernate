@@ -1,8 +1,9 @@
 package ua.org.hibernate.entity;
 
-import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -20,22 +21,17 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserData {
-
-  @Basic
-  @Column(name = "email", nullable = false, length = -1)
-  private String email;
-
-  @Basic
-  @Column(name = "userpassword", nullable = false, length = -1)
-  private String userpassword;
-
-  @Basic
-  @Column(name = "username", nullable = false, length = -1)
-  private String username;
+public class User {
 
   @Id
-  @Column(name = "id", nullable = false)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+
+  private String email;
+
+  @Column(name = "userpassword", nullable = false, length = -1)
+  private String password;
+
+  private String username;
 
 }
