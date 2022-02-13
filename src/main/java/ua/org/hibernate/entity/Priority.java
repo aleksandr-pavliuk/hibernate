@@ -18,27 +18,21 @@ import lombok.Setter;
  * @link http://healthfood.net.ua
  */
 @Entity
-@Table(name = "category", schema = "todolist", catalog = "postgres")
+@Table(name = "priority", schema = "todolist", catalog = "postgres")
 @EqualsAndHashCode
 @NoArgsConstructor
 @Getter
 @Setter
-public class Category {
+public class Priority {
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
   private long id;
 
   private String title;
-
-  @Column(name = "completed_count", updatable = false)
-  private long completedCount;
-
-  @Column(name = "uncompleted_count", updatable = false)
-  private long uncompletedCount;
+  private String color;
 
   @ManyToOne
   @JoinColumn(name = "user_id", referencedColumnName = "id")
   private User user;
-
 }

@@ -16,6 +16,8 @@
     <!--        <property name="hibernate.hibernate.session.events.log">true</property>-->
 
     <mapping class="ua.org.hibernate.entity.User"/>
+    <mapping class="ua.org.hibernate.entity.Category"/>
+    <mapping class="ua.org.hibernate.entity.Priority"/>
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
