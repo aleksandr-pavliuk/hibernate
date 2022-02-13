@@ -31,9 +31,9 @@ public class Priority {
   private String title;
   private String color;
 
-  @ManyToOne
-  @JoinColumn(name = "user_id", referencedColumnName = "id")
-  private User user;
+//  @ManyToOne
+//  @JoinColumn(name = "user_id", referencedColumnName = "id")
+//  private User user;
 
   @Override
   public boolean equals(Object o) {
@@ -60,7 +60,6 @@ public class Priority {
         "id=" + id +
         ", title='" + title + '\'' +
         ", color='" + color + '\'' +
-        ", user=" + user +
         '}';
   }
 }

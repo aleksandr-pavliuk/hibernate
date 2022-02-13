@@ -23,6 +23,7 @@
     <mapping class="ua.org.hibernate.entity.Activity"/>
     <mapping class="ua.org.hibernate.entity.Stat"/>
     <mapping class="ua.org.hibernate.entity.Role"/>
+    <mapping class="ua.org.hibernate.entity.Task"/>
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->

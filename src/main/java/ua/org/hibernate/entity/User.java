@@ -42,23 +42,26 @@ public class User {
 
   private String username;
 
-  @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-  private List<Category> categories;
-
-  @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-  private List<Category> priorities;
-
-  @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
-  private Activity activity;
-
-  @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
-  private Stat stat;
-
-  @ManyToMany(fetch = FetchType.LAZY)
+  @ManyToMany
   @JoinTable(name = "user_role",
       joinColumns = @JoinColumn(name = "user_id"),
       inverseJoinColumns = @JoinColumn(name = "role_id"))
   private Set<Role> roles;
+
+//  @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+//  private List<Task> tasks;
+//
+//  @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+//  private List<Category> categories;
+//
+//  @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+//  private List<Category> priorities;
+//
+//  @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+//  private Activity activity;
+//
+//  @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+//  private Stat stat;
 
   @Override
   public boolean equals(Object o) {
