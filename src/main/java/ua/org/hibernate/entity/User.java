@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -42,5 +43,11 @@ public class User {
 
   @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
   private List<Category> priorities;
+
+  @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+  private Activity activity;
+
+  @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+  private Stat stat;
 
 }

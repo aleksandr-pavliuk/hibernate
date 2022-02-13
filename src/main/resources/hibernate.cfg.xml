@@ -18,6 +18,8 @@
     <mapping class="ua.org.hibernate.entity.User"/>
     <mapping class="ua.org.hibernate.entity.Category"/>
     <mapping class="ua.org.hibernate.entity.Priority"/>
+    <mapping class="ua.org.hibernate.entity.Activity"/>
+    <mapping class="ua.org.hibernate.entity.Stat"/>
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
