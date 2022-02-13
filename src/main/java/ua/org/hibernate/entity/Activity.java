@@ -20,7 +20,6 @@ import org.hibernate.annotations.Type;
  */
 @Entity
 @Table(name = "activity", schema = "todolist", catalog = "postgres")
-@EqualsAndHashCode
 @NoArgsConstructor
 @Getter
 @Setter

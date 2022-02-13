@@ -19,7 +19,6 @@ import lombok.Setter;
  */
 @Entity
 @Table(name = "category", schema = "todolist", catalog = "postgres")
-@EqualsAndHashCode
 @NoArgsConstructor
 @Getter
 @Setter
