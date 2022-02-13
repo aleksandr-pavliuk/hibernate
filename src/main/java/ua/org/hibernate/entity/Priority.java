@@ -27,7 +27,7 @@ public class Priority {
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
-  private long id;
+  private Long id;
 
   private String title;
   private String color;
@@ -35,4 +35,23 @@ public class Priority {
   @ManyToOne
   @JoinColumn(name = "user_id", referencedColumnName = "id")
   private User user;
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    Priority priority = (Priority) o;
+
+    return id.equals(priority.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return id.hashCode();
+  }
 }

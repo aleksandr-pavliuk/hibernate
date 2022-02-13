@@ -27,10 +27,29 @@ public class Role {
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
-  private long id;
+  private Long id;
 
   private String name;
 
   @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
   private Set<User> users;
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    Role role = (Role) o;
+
+    return id.equals(role.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return id.hashCode();
+  }
 }

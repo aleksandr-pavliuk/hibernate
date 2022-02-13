@@ -27,18 +27,36 @@ public class Category {
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
-  private long id;
+  private Long id;
 
   private String title;
 
   @Column(name = "completed_count", updatable = false)
-  private long completedCount;
+  private Long completedCount;
 
   @Column(name = "uncompleted_count", updatable = false)
-  private long uncompletedCount;
+  private Long uncompletedCount;
 
   @ManyToOne
   @JoinColumn(name = "user_id", referencedColumnName = "id")
   private User user;
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    Category category = (Category) o;
+
+    return id.equals(category.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return id.hashCode();
+  }
 }

@@ -29,7 +29,7 @@ public class Activity {
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
-  private long id;
+  private Long id;
 
   @Type(type = "org.hibernate.type.NumericBooleanType")
   private boolean activated;
@@ -37,11 +37,26 @@ public class Activity {
   @Column(updatable = false)
   private String uuid;
 
-  @Column(name = "uncompleted_count", updatable = false)
-  private long uncompletedCount;
-
   @OneToOne
   @JoinColumn(name = "user_id", referencedColumnName = "id")
   private User user;
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    Activity activity = (Activity) o;
+
+    return id.equals(activity.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return id.hashCode();
+  }
 }
