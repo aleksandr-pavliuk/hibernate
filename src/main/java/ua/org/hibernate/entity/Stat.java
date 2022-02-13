@@ -56,4 +56,12 @@ public class Stat {
   public int hashCode() {
     return id.hashCode();
   }
+
+  @Override
+  public String toString() {
+    return "Stat{" +
+        "id=" + id +
+        ", user=" + user +
+        '}';
+  }
 }

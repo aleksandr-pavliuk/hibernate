@@ -58,4 +58,13 @@ public class Category {
   public int hashCode() {
     return id.hashCode();
   }
+
+  @Override
+  public String toString() {
+    return "Category{" +
+        "id=" + id +
+        ", title='" + title + '\'' +
+        ", user=" + user +
+        '}';
+  }
 }

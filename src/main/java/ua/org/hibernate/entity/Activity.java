@@ -58,4 +58,13 @@ public class Activity {
   public int hashCode() {
     return id.hashCode();
   }
+
+  @Override
+  public String toString() {
+    return "Activity{" +
+        "id=" + id +
+        ", uuid='" + uuid + '\'' +
+        ", user=" + user +
+        '}';
+  }
 }

@@ -78,4 +78,13 @@ public class User {
   public int hashCode() {
     return id.hashCode();
   }
+
+  @Override
+  public String toString() {
+    return "User{" +
+        "id=" + id +
+        ", email='" + email + '\'' +
+        ", username='" + username + '\'' +
+        '}';
+  }
 }

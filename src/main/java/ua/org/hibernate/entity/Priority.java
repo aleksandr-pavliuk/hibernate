@@ -53,4 +53,14 @@ public class Priority {
   public int hashCode() {
     return id.hashCode();
   }
+
+  @Override
+  public String toString() {
+    return "Priority{" +
+        "id=" + id +
+        ", title='" + title + '\'' +
+        ", color='" + color + '\'' +
+        ", user=" + user +
+        '}';
+  }
 }
