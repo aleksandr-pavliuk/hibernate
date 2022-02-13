@@ -3,14 +3,17 @@ package ua.org.hibernate;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaUpdate;
 import jakarta.persistence.criteria.Root;
+import lombok.extern.log4j.Log4j2;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import ua.org.hibernate.entity.Role;
 import ua.org.hibernate.entity.User;
 
 /**
  * @author Alex
  * @link http://healthfood.net.ua
  */
+@Log4j2
 public class Main {
 
   public static void main(String[] args) {
@@ -30,10 +33,10 @@ public class Main {
 
     System.out.println("user.getId() = " + user.getId());
     session.close();
-    HibernateUtil.close();*/
+    HibernateUtil.close();
 
     //сразу получаем готовый SessionFactory и сразу создаем сессию
-    Session session = HibernateUtil.getSessionFactory().openSession();
+    Session session = HibernateUtil.getSessionFactory().openSession();*/
 
     // подготовка запроса - получение всех пользователей
 //        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
@@ -61,7 +64,7 @@ public class Main {
 //        session.createQuery(criteriaDelete).executeUpdate();
 //        transaction.commit();
 
-    CriteriaBuilder cb = session.getCriteriaBuilder();
+   /* CriteriaBuilder cb = session.getCriteriaBuilder();
     CriteriaUpdate<User> criteriaUpdate = cb.createCriteriaUpdate(User.class);
     Root<User> root = criteriaUpdate.from(User.class);
 
@@ -74,6 +77,22 @@ public class Main {
 
     session.close();// закрыть сессию
 
-    HibernateUtil.close(); // закрыть Session Factory
+    HibernateUtil.close(); // закрыть Session Factory*/
+    log.info("Hibernate tutorial started");
+
+    //сразу получаем готовый SessionFactory и сразу создаем сессию
+    Session session = HibernateUtil.getSessionFactory().openSession();
+
+
+    Role r1 = session.get(Role.class, 2);
+
+
+    log.info(r1.getUsers());
+//       log.info(u1.getStat());
+
+
+    session.close();
+
+    HibernateUtil.close(); // закрыть Session Factory - очищается кеш 2го уровня
   }
 }
