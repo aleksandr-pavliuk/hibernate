@@ -92,6 +92,19 @@ public class Main {
 
     //сразу получаем готовый SessionFactory и сразу создаем сессию
 //    Session session = HibernateUtil.getSessionFactory().openSession();
+    //        User user = new User();
+//        user.setUsername("testuser");
+//        user.setPassword("testuser");
+//        user.setEmail("testuser@gmail.com");
+//
+//        UserDAOImpl userDAO = new UserDAOImpl();
+//        userDAO.add(user);
+//
+//        // активируем пользователя (поле activated)
+//        ActivityDAOImpl activityDAO = new ActivityDAOImpl();
+//        Activity activity = activityDAO.getByUser(user);
+//        activity.setActivated(true);
+//        activityDAO.update(activity);
 
     UserDAOImpl userDAO = new UserDAOImpl();
 
