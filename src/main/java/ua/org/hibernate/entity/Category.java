@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -36,9 +35,9 @@ public class Category {
   @Column(name = "uncompleted_count", updatable = false)
   private Long uncompletedCount;
 
-//  @ManyToOne
-//  @JoinColumn(name = "user_id", referencedColumnName = "id")
-//  private User user;
+  @ManyToOne
+  @JoinColumn(name = "user_id", referencedColumnName = "id")
+  private User user;
 
   @Override
   public boolean equals(Object o) {

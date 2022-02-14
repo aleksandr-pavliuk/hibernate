@@ -3,10 +3,20 @@ package ua.org.hibernate;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaUpdate;
 import jakarta.persistence.criteria.Root;
+import java.util.Date;
 import lombok.extern.log4j.Log4j2;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import ua.org.hibernate.dao.impl.CategoryDAOImpl;
+import ua.org.hibernate.dao.impl.PriorityDAOImpl;
+import ua.org.hibernate.dao.impl.StatDAOImpl;
+import ua.org.hibernate.dao.impl.TaskDAOImpl;
+import ua.org.hibernate.dao.impl.UserDAOImpl;
+import ua.org.hibernate.entity.Category;
+import ua.org.hibernate.entity.Priority;
 import ua.org.hibernate.entity.Role;
+import ua.org.hibernate.entity.Stat;
+import ua.org.hibernate.entity.Task;
 import ua.org.hibernate.entity.User;
 
 /**
@@ -81,18 +91,52 @@ public class Main {
     log.info("Hibernate tutorial started");
 
     //сразу получаем готовый SessionFactory и сразу создаем сессию
-    Session session = HibernateUtil.getSessionFactory().openSession();
+//    Session session = HibernateUtil.getSessionFactory().openSession();
+
+    UserDAOImpl userDAO = new UserDAOImpl();
+
+    User user = userDAO.get(10025L);
 
 
-    Role r1 = session.get(Role.class, 2);
+    // создаем справочные значения
+    PriorityDAOImpl priorityDAO = new PriorityDAOImpl();
 
+    Priority priority = new Priority();
+    priority.setColor("#fff");
+    priority.setTitle("Новый приоритет");
+    priority.setUser(user);
+    priorityDAO.add(priority);
 
-    log.info(r1.getUsers());
-//       log.info(u1.getStat());
+    CategoryDAOImpl categoryDAO = new CategoryDAOImpl();
 
+    Category category = new Category();
+    category.setTitle("Новая категория");
+    category.setUser(user);
+    categoryDAO.add(category);
 
-    session.close();
+    TaskDAOImpl taskDAO = new TaskDAOImpl();
 
-    HibernateUtil.close(); // закрыть Session Factory - очищается кеш 2го уровня
+    Task task = new Task();
+    task.setUser(user);
+    task.setTitle("Супер новая задача222");
+    task.setCategory(category);
+    task.setPriority(priority);
+    task.setTaskDate(new Date());
+    task.setCompleted(false);
+    taskDAO.add(task);
+
+    task.setCompleted(true);
+    taskDAO.update(task);
+
+    taskDAO.delete(task.getId());
+
+    StatDAOImpl statDAO = new StatDAOImpl();
+    Stat stat = statDAO.getByUser(user);
+
+    log.info(stat.getCompletedTotal());
+
+    log.info(category.getCompletedCount());
+
+    HibernateUtil.close();
   }
 }
